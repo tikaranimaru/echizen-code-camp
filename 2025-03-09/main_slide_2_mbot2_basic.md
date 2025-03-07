@@ -41,7 +41,7 @@ style: |
 
 ---
 
-# Python x mBot2プログラミング 【基礎編】
+# Python x mBot2プログラミング 【初級編】
 
 ---
 
