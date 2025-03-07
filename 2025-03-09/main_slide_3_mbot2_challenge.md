@@ -54,11 +54,9 @@ style: |
 mBot2を制御するために、以下のモジュールを読み込みます。
 ```python
 import cyberpi        # LED、サウンドなどの制御
-import mbuild.mbot2   # mBot2本体の制御
+import mbot2         # mBot2本体の制御
+import mbuild         #　センサーなどモジュールの制御
 import time          # 時間待機用
-
-# 初期化
-mbot = mbuild.mbot2.MBot2()  # mBotを動かすおまじない(準備
 ```
 
 このプログラムは、以降のすべての例で必要となりますので、
@@ -83,6 +81,9 @@ my_color = "red"
 
 # 変更した値で再度LEDを制御
 cyberpi.led.on(my_color)
+
+# 消す
+cyberpi.led.off()
 ```
 
 ---
@@ -101,17 +102,20 @@ cyberpi.led.on(my_color)
 
 ```python
 # 距離を測る
-distance = mbot.ultrasonic.get_distance()
+distance = mbuild.ultrasonic2.get()
 
-if distance < 10:               # 10cmより近い場合
+if distance < 10:               # (1) 10cmより近い場合
+    cyberpi.display.show_label("バックします", 16, 0, 0)
     cyberpi.led.on('red')
-    mbot.move(30, -30)          # 後退
-elif distance < 20:             # やや近い場合
+    mbot2.backward(50, 1)       # 後退
+elif distance < 20:             # (2) やや近い場合
     cyberpi.led.on('yellow')
-    mbot.move(0, 0)             # 停止
-else:                           # 十分な距離がある場合
+    cyberpi.display.show_label("停止します", 16, 0, 0)
+    mbot2.backward(0, 1)        # 停止
+else:                           # (3) 十分な距離がある場合
     cyberpi.led.on('green')
-    mbot.move(-30, 30)          # 前進
+    cyberpi.display.show_label("進みます", 16, 0, 0)
+    mbot2.forward(50, 2)        # 前進
 ```
 
 ---
@@ -136,11 +140,11 @@ for color in colors:
     time.sleep(1)
 
 # 数値を使った繰り返し
-for speed in [100, 200, 300, 400]:
+for speed in [30, 50, 70, 90]:
     # 前進して停止を4回繰り返す
-    mbot.move(-1 * speed, speed) # 前進
-    time.sleep(1)
-    mbot.move(speed, -1 * speed) # 後退
+    mbot2.forward(speed, 1) # 前進
+    time.sleep(0.5)
+    mbot2.backward(speed, 1) # 後退
     time.sleep(0.5)
 ```
 
@@ -156,11 +160,11 @@ for speed in [100, 200, 300, 400]:
 2. 四角形を描くように走らせてみよう（4回の直進と回転）
    hint: 
    ```python
-   # 前進する　場合
-   mbot.move(100, 100)
+    # 50の速さで1秒進む
+    mbot2.forward(50, 1)
 
-   # 左に90度回転する場合
-   mbot.move(0, 100)
+    # 時計回りに90度曲がる
+    mbot2.turn(90, 50)
    ```
 ---
 
@@ -170,13 +174,13 @@ for speed in [100, 200, 300, 400]:
 
 ```python
 def stop_and_turn_right():
-    mbot.move(0, 0)
+    mbot2.forward(0, 1)
     time.sleep(0.1)
-    mbot.move(50, 0)
+    mbot2.turn_left(50, 1)
     time.sleep(0.1)
 
 def is_require_stop():
-    distance = mbot.ultrasonic.get_distance()
+    distance = mbuild.ultrasonic2.get()
     if distance < 10:
         return 1
     else:
