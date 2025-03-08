@@ -1,45 +1,48 @@
 ---
 marp: true
 theme: gaia
-# header: "Code Camp Echizen"
-footer: "Code Camp Echizen / コードキャンプ越前"
-backgroundColor: "#EEEEEE"
 paginate: true
-markdownlint:
-  MD025: false
-  MD033: false
-
-style: |
-  :root {
-    --fw: 1;
-  }
-  /* ----- レイアウト ----- */
-  .flex{
-    display: flex;
-    gap: 1em;
-  }
-  .sa {
-    justify-content: space-around;
-    /* border: 8px dashed rgb(15, 166, 226);
-    background-color: rgb(222, 244, 255); */
-  }
-  .sb {
-    justify-content: space-between;
-    /* border: 8px dashed rgb(21, 17, 255);
-    background-color: rgb(222, 244, 255); */
-  }
-  .sa div,.sb div{
-    margin: 0.1em;
-    /* border: 8px dashed rgb(80, 177, 109);
-    background-color: rgb(227, 250, 237); */
-  }
-  .fw div{
-    flex: var(--fw);
-    /* background-color: rgb(244, 238, 255);
-    border: 8px dashed rgb(93, 0, 255); */
-  }/* ---------- */
 
 ---
+
+<style>
+@import 'code-camp.css';
+@import url('https://fonts.googleapis.com/css?family=Noto Sans JP&display=swap');
+section {
+    font-family: 'Noto Sans JP', serif;
+    background-image: url("bgimage.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.compact-text {
+    font-size: 32px;
+    line-height: 1.3;
+    padding: 30px;
+}
+
+.compact-text h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.compact-text h4 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.compact-text p {
+    margin: 6px 0;
+}
+
+.compact-text pre {
+    margin: 12px 0;
+}
+
+</style>
+
+
 
 # Python x mBot2プログラミング 【その他】
 
@@ -101,6 +104,8 @@ mbot.drive_speed(0, 0)
 
 ## 2. 距離センサーを使おう
 
+<div class="compact-text">
+
 mBot2は前方の距離を測ることができます。これを使って、障害物を避けることもできます。
 
 ```python
@@ -120,6 +125,8 @@ if distance < 10:  # 10cm未満なら
 else:  # それ以外なら
     cyberpi.led.on("green")  # 緑に光る
 ```
+
+</div>
 
 ---
 

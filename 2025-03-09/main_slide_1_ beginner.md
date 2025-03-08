@@ -1,48 +1,47 @@
 ---
 marp: true
 theme: gaia
-# header: "Code Camp Echizen"
-footer: "Code Camp Echizen / コードキャンプ越前"
-backgroundColor: "#EEEEEE"
 paginate: true
-markdownlint:
-  MD025: false
-  MD033: false
-
-style: |
-  :root {
-    --fw: 1;
-  }
-  /* ----- レイアウト ----- */
-  .flex{
-    display: flex;
-    gap: 1em;
-  }
-  .sa {
-    justify-content: space-around;
-    /* border: 8px dashed rgb(15, 166, 226);
-    background-color: rgb(222, 244, 255); */
-  }
-  .sb {
-    justify-content: space-between;
-    /* border: 8px dashed rgb(21, 17, 255);
-    background-color: rgb(222, 244, 255); */
-  }
-  .sa div,.sb div{
-    margin: 0.1em;
-    /* border: 8px dashed rgb(80, 177, 109);
-    background-color: rgb(227, 250, 237); */
-  }
-  .fw div{
-    flex: var(--fw);
-    /* background-color: rgb(244, 238, 255);
-    border: 8px dashed rgb(93, 0, 255); */
-  }/* ---------- */
-
-# 段組の使い方
-# https://briboo-pc.hatenablog.jp/entry/2023/11/05/%E3%80%90Marp%E3%80%91%E3%82%B3%E3%83%94%E3%83%9A%E3%81%A7%E7%B0%A1%E5%8D%98%EF%BC%81%E5%A4%9A%E6%AE%B5%E7%B5%84%E3%81%BF%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%83%AC%E3%82%A4%E3%82%A2%E3%82%A6
 
 ---
+
+<style>
+@import 'code-camp.css';
+@import url('https://fonts.googleapis.com/css?family=Noto Sans JP&display=swap');
+section {
+    font-family: 'Noto Sans JP', serif;
+    background-image: url("bgimage.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.compact-text {
+    font-size: 32px;
+    line-height: 1.3;
+    padding: 30px;
+}
+
+.compact-text h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.compact-text h4 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.compact-text p {
+    margin: 8px 0;
+}
+
+.compact-text pre {
+    margin: 12px 0;
+}
+
+</style>
+
 
 # プログラミング基本編
 pythonでプログラミングをしてみよう
